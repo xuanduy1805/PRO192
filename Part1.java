@@ -1,39 +1,27 @@
-package workshop1;
+package workshop2;
 
-import java.lang.System;
 import java.util.Scanner;
 
 public class Part1 {
 
     public static void main(String[] args) {
-        int rows, cols, matrix[][];
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap so rows: ");
-        rows = sc.nextInt();
-        System.out.println("Nhap so cols: ");
-        cols = sc.nextInt();
-        matrix = new int[rows][cols];
-        System.out.println("Nhap the matrix: ");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print("\nA[" + i + "][" + j + "]=");
-                matrix[i][j] = sc.nextInt();
+        boolean cont = false;
+        do {
+            try {
+                int num;
+                Scanner scn = new Scanner(System.in);
+                System.out.print("Nhập số: ");
+                num = scn.nextInt();
+                if (num < 1) {
+                    throw new Exception();
+                }
+                System.out.println("So la " + num);
+                cont = false;
+
+            } catch (Exception e) {
+                System.out.println("Kí tự không hợp lí");
+                cont = true;
             }
-        }
-        System.out.println("Matrix inputted: ");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.format("%3d", matrix[i][j]);
-            }
-            System.out.println("\n");
-        }
-        int sum = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                sum +=matrix[i][j];
-            }
-        }
-        System.out.println("Sum:" + sum);
-        System.out.println("Average:" +(float)sum/(rows*cols));
+        } while (cont);
     }
 }
